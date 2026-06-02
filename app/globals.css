@@ -115,7 +115,31 @@
   --color-sidebar-ring: var(--sidebar-ring);
 }
 
-/* Brutalist Button Style */
+/* Clean Button Style - Empty fill with stroke default, shadow on hover */
+.btn-primary {
+  background-color: white;
+  color: black;
+  border-radius: 10em;
+  font-size: 17px;
+  font-weight: 600;
+  padding: 1em 2em;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  border: 2px solid black;
+  box-shadow: 0 0 0 0 black;
+}
+
+.btn-primary:hover {
+  transform: translateY(-4px) translateX(-2px);
+  box-shadow: 2px 5px 0 0 black;
+}
+
+.btn-primary:active {
+  transform: translateY(2px) translateX(1px);
+  box-shadow: 0 0 0 0 black;
+}
+
+/* Brutalist Button Style - For CTA sections */
 .brutalist-button {
   display: inline-flex;
   align-items: center;
@@ -138,68 +162,17 @@
   border-radius: 0;
 }
 
-.brutalist-button::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255, 255, 255, 0.3),
-    transparent
-  );
-  z-index: 1;
-  transition: none;
-  opacity: 0;
-}
-
-@keyframes slide {
-  0% {
-    left: -100%;
-  }
-  100% {
-    left: 100%;
-  }
-}
-
-.brutalist-button:hover::before {
-  opacity: 1;
-  animation: slide 0.6s ease-in-out;
-}
-
 .brutalist-button:hover {
   transform: translate(-4px, -4px);
   box-shadow: 10px 10px 0 #003FBD;
-  background-color: #000;
-  color: #fff;
-}
-
-.brutalist-button:active {
-  transform: translate(4px, 4px);
-  box-shadow: 0px 0px 0 #003FBD;
-  background-color: #fff;
-  color: #000;
-  border-color: #000;
 }
 
 .button-text {
   display: flex;
   flex-direction: column;
   line-height: 1.2;
-  transition: transform 0.2s ease-out;
   position: relative;
   z-index: 1;
-}
-
-.brutalist-button:hover .button-text {
-  transform: skew(-5deg);
-}
-
-.brutalist-button:active .button-text {
-  transform: skew(5deg);
 }
 
 .button-text span:first-child {
