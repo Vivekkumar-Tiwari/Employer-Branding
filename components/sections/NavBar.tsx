@@ -9,7 +9,7 @@ export default function NavBar() {
 
   return (
     <motion.nav
-      className="fixed top-0 left-0 right-0 z-40 bg-background/80 backdrop-blur-md border-b border-border"
+      className="fixed top-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-md border-b border-black/10"
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
@@ -21,10 +21,10 @@ export default function NavBar() {
             className="flex items-center gap-2"
             whileHover={{ scale: 1.05 }}
           >
-            <div className="w-8 h-8 bg-gradient-to-br from-primary to-secondary rounded-lg flex items-center justify-center text-white font-bold">
+            <div className="w-8 h-8 bg-black rounded-lg flex items-center justify-center text-white font-bold">
               EB
             </div>
-            <span className="font-semibold text-foreground hidden sm:inline">Employer Branding</span>
+            <span className="font-semibold text-black hidden sm:inline">Employer Branding</span>
           </motion.div>
 
           {/* Desktop Menu */}
@@ -33,8 +33,8 @@ export default function NavBar() {
               <motion.a
                 key={item}
                 href={`#${item.toLowerCase()}`}
-                className="text-foreground/70 hover:text-foreground transition-colors"
-                whileHover={{ color: '#0057FF' }}
+                className="text-gray-700 hover:text-black transition-colors"
+                whileHover={{ scale: 1.05 }}
               >
                 {item}
               </motion.a>
@@ -44,14 +44,14 @@ export default function NavBar() {
           {/* CTA Button */}
           <div className="hidden md:flex gap-4">
             <motion.button
-              className="px-6 py-2 rounded-full border border-primary text-primary hover:bg-primary/5 transition-colors"
+              className="px-6 py-2 rounded-lg border-2 border-black text-black hover:bg-black hover:text-white transition-all"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
               Talk to Team
             </motion.button>
             <motion.button
-              className="px-6 py-2 rounded-full bg-primary text-primary-foreground hover:shadow-lg transition-shadow"
+              className="px-6 py-2 rounded-lg bg-black text-white border-2 border-black hover:bg-white hover:text-black transition-all"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -61,7 +61,7 @@ export default function NavBar() {
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden"
+            className="md:hidden text-black"
             onClick={() => setIsOpen(!isOpen)}
           >
             {isOpen ? <X size={24} /> : <Menu size={24} />}
@@ -80,13 +80,13 @@ export default function NavBar() {
               <a
                 key={item}
                 href={`#${item.toLowerCase()}`}
-                className="block text-foreground/70 hover:text-foreground"
+                className="block text-gray-700 hover:text-black"
               >
                 {item}
               </a>
             ))}
             <motion.button
-              className="w-full px-6 py-2 rounded-full bg-primary text-primary-foreground"
+              className="w-full px-6 py-2 rounded-lg bg-black text-white"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
