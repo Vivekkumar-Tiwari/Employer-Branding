@@ -18,31 +18,44 @@ export default function Hero() {
             <span className="text-[#003FBD]">Turn</span> Employees Into Your Most<br />Powerful Brand Channel
           </h1>
 
+          {/* Service Cards */}
+          <div className="grid grid-cols-3 gap-4 mb-10">
+            <motion.div
+              whileHover={{ y: -4 }}
+              className="p-4 bg-gradient-to-br from-teal-50 to-teal-100 rounded-xl border border-teal-200"
+            >
+              <p className="font-semibold text-teal-900 text-sm">Content Creation</p>
+            </motion.div>
+            <motion.div
+              whileHover={{ y: -4 }}
+              className="p-4 bg-gradient-to-br from-rose-50 to-rose-100 rounded-xl border border-rose-200"
+            >
+              <p className="font-semibold text-rose-900 text-sm">Engagement Boost</p>
+            </motion.div>
+            <motion.div
+              whileHover={{ y: -4 }}
+              className="p-4 bg-gradient-to-br from-amber-50 to-amber-100 rounded-xl border border-amber-200"
+            >
+              <p className="font-semibold text-amber-900 text-sm">Distribution</p>
+            </motion.div>
+          </div>
+
           {/* Subtitle */}
           <p className="text-base md:text-lg text-gray-700 mb-10 leading-relaxed">
             Transform your workforce into authentic brand ambassadors. Create high-quality employee-generated content that drives recruitment and trust.
           </p>
 
-          {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center">
-            {/* Primary CTA */}
-            <motion.button
-              whileHover={{ translateY: '-4px', boxShadow: '2px 5px 0 0 black' }}
-              whileTap={{ translateY: '2px', boxShadow: '0 0 0 0 black' }}
-              className="px-8 py-4 bg-white text-black border-2 border-black rounded-full font-semibold transition-all duration-300 hover:bg-black hover:text-white"
-            >
-              Book a Discovery Call
-            </motion.button>
-
-            {/* Secondary CTA */}
-            <motion.button
-              whileHover={{ translateY: '-4px', boxShadow: '2px 5px 0 0 black' }}
-              whileTap={{ translateY: '2px', boxShadow: '0 0 0 0 black' }}
-              className="px-8 py-4 bg-transparent text-black border-2 border-black rounded-full font-semibold transition-all duration-300 hover:bg-black hover:text-white"
-            >
-              See Our Work
-            </motion.button>
-          </div>
+          {/* Single CTA Button - Centered, Two Lines */}
+          <motion.button
+            whileHover={{ translateY: '-4px', boxShadow: '2px 5px 0 0 black' }}
+            whileTap={{ translateY: '2px', boxShadow: '0 0 0 0 black' }}
+            className="px-8 py-4 bg-white text-black border-2 border-black rounded-full font-semibold transition-all duration-300 hover:bg-black hover:text-white inline-block"
+          >
+            <div className="flex flex-col leading-tight">
+              <span>Book a</span>
+              <span>Discovery Call</span>
+            </div>
+          </motion.button>
         </motion.div>
 
         {/* Right Visual - 3D Illustration Placeholder */}

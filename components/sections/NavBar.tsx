@@ -48,14 +48,11 @@ export default function NavBar() {
           {/* CTA Button */}
           <div className="hidden md:flex gap-2">
             <motion.button
-              className="brutalist-button"
-              style={{ width: 'auto', height: '50px' }}
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
+              whileHover={{ translateY: '-2px', boxShadow: '2px 3px 0 0 black' }}
+              whileTap={{ translateY: '1px', boxShadow: '0 0 0 0 black' }}
+              className="px-6 py-2 bg-white text-black border-2 border-black rounded-full font-semibold transition-all duration-300 hover:bg-black hover:text-white text-sm"
             >
-              <div className="button-text">
-                <span>Contact</span>
-              </div>
+              Contact
             </motion.button>
           </div>
 
