@@ -4,12 +4,30 @@ import { motion } from 'framer-motion'
 
 export default function How() {
   const steps = [
-    { title: 'Employee Enrollment', desc: 'Invite your team to participate in content creation' },
-    { title: 'Content Creation', desc: 'Professional guidance on storytelling and filming' },
-    { title: 'Production Quality', desc: 'Professional editing and polishing of content' },
-    { title: 'Distribution', desc: 'Strategic sharing across all major platforms' },
-    { title: 'Analytics', desc: 'Track engagement and measure impact' },
-    { title: 'Optimization', desc: 'Continuous improvement based on performance' },
+    { 
+      number: '01',
+      title: 'Share Details', 
+      desc: 'Fill out a quick form with details about your space, schedule, and preferences.',
+      bgColor: 'from-amber-900 to-amber-700'
+    },
+    { 
+      number: '02',
+      title: 'Get Quote', 
+      desc: 'We&apos;ll send you a personalized estimate, no hidden fees, no upselling.',
+      bgColor: 'from-rose-900 to-rose-700'
+    },
+    { 
+      number: '03',
+      title: 'We Clean', 
+      desc: 'Our team arrives on time, equipped, and ready to clean thoroughly.',
+      bgColor: 'from-green-900 to-green-700'
+    },
+    { 
+      number: '04',
+      title: 'You Relax', 
+      desc: 'Enjoy a spotless home or workspace that looks, feels, and smells truly clean.',
+      bgColor: 'from-blue-900 to-blue-700'
+    },
   ]
 
   return (
@@ -20,17 +38,23 @@ export default function How() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-semibold text-black mb-4">
-            <span className="text-[#003FBD]">How</span> Our Process Works
-          </h2>
-          <p className="text-gray-700 text-lg max-w-2xl mx-auto">
-            A streamlined approach to transforming employees into content creators
+          <p className="text-[#003FBD] text-sm font-semibold uppercase tracking-wider mb-4">
+            How it works
           </p>
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between">
+            <h2 className="text-4xl md:text-5xl font-bold text-black mb-4 md:mb-0">
+              Get Cleaner Space<br />in Four Steps
+            </h2>
+            <p className="text-gray-600 text-lg max-w-xs">
+              And sometimes, in as little as 24 hours.
+            </p>
+          </div>
         </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        {/* 2x2 Grid of Overlay Cards */}
+        <div className="grid md:grid-cols-2 gap-8">
           {steps.map((step, i) => (
             <motion.div
               key={i}
@@ -38,11 +62,27 @@ export default function How() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: i * 0.1 }}
               viewport={{ once: true }}
-              className="bg-white border-2 border-black p-8 rounded-lg hover:shadow-xl transition-shadow"
+              className={`relative h-64 bg-gradient-to-br ${step.bgColor} rounded-3xl overflow-hidden group cursor-pointer`}
             >
-              <div className="text-4xl font-bold text-[#003FBD] mb-4">{i + 1}</div>
-              <h3 className="text-xl font-semibold text-black mb-3">{step.title}</h3>
-              <p className="text-gray-700">{step.desc}</p>
+              {/* Background overlay */}
+              <div className="absolute inset-0 bg-black/30 group-hover:bg-black/40 transition-all duration-300"></div>
+
+              {/* Large step number */}
+              <div className="absolute inset-0 flex items-center justify-center opacity-10">
+                <span className="text-9xl font-bold text-white">{step.number}</span>
+              </div>
+
+              {/* Content */}
+              <div className="relative h-full flex flex-col justify-between p-8 text-white">
+                <div>
+                  <div className="text-5xl font-bold opacity-50 mb-4">{step.number}</div>
+                  <h3 className="text-2xl font-bold mb-3">{step.title}</h3>
+                  <p className="text-white/90 text-lg leading-relaxed">{step.desc}</p>
+                </div>
+
+                {/* Hover indicator */}
+                <div className="w-12 h-1 bg-white/30 group-hover:bg-white transition-all duration-300"></div>
+              </div>
             </motion.div>
           ))}
         </div>
