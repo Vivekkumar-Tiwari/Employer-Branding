@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { Linkedin, Instagram, Youtube, ArrowUp } from 'lucide-react'
+import Image from 'next/image'
 
 export default function Footer() {
   const scrollToTop = () => {
@@ -52,10 +53,13 @@ export default function Footer() {
               className="flex items-center gap-2"
               whileHover={{ scale: 1.05 }}
             >
-              <div className="w-8 h-8 bg-white rounded-lg flex items-center justify-center text-black font-bold text-sm">
-                EB
-              </div>
-              <span className="font-semibold text-lg">Employer Branding</span>
+              <Image
+                src="/logo.png"
+                alt="Ample Logo"
+                width={140}
+                height={40}
+                className="h-8 w-auto invert"
+              />
             </motion.div>
             <p className="text-gray-400 max-w-md">
               Transform employees into your most powerful brand channel through authentic, cinematic storytelling.

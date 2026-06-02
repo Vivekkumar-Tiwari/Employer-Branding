@@ -12,23 +12,26 @@ export default function Hero() {
         viewport={{ once: true }}
         className="max-w-4xl text-center"
       >
-        {/* Title - Semibold */}
+        {/* Title - Two lines, Semibold */}
         <h1 className="text-5xl md:text-6xl lg:text-7xl font-semibold text-black mb-8 leading-tight">
-          Turn Employees Into Your Most Powerful Brand Channel
+          <span className="text-[#003FBD]">Turn</span> Employees Into Your Most<br />Powerful Brand Channel
         </h1>
 
-        {/* Subtitle */}
-        <p className="text-lg md:text-xl text-gray-700 mb-12 leading-relaxed max-w-2xl mx-auto">
-          Transform your workforce into authentic brand ambassadors. Create high-quality, employee-generated content that drives recruitment, engagement, and trust.
+        {/* Subtitle - Two lines */}
+        <p className="text-base md:text-lg text-gray-700 mb-12 leading-relaxed max-w-2xl mx-auto">
+          Transform your workforce into authentic brand ambassadors.<br />Create high-quality employee content that drives results.
         </p>
 
-        {/* Single CTA Button with Black Stroke */}
+        {/* CTA Button - Brutalist Style */}
         <motion.button
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          className="px-8 py-4 bg-white text-black border-2 border-black rounded-lg font-semibold text-lg hover:bg-black hover:text-white transition-all duration-300"
+          whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.98 }}
+          className="brutalist-button"
         >
-          Get Started Free →
+          <div className="button-text">
+            <span>Start Now</span>
+            <span>Get Access</span>
+          </div>
         </motion.button>
       </motion.div>
     </section>

@@ -41,7 +41,7 @@ export default function Features() {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-semibold text-black mb-6">
-            Everything You Need
+            <span className="text-[#003FBD]">Everything</span> You Need
           </h2>
           <p className="text-lg text-gray-700 max-w-2xl mx-auto">
             A complete platform for employee branding, from content creation to distribution and analytics.

@@ -13,7 +13,7 @@ export default function CTA() {
           viewport={{ once: true }}
         >
           <h2 className="text-4xl md:text-5xl font-semibold text-white mb-8 leading-tight">
-            Ready to Transform Your Employer Brand?
+            <span className="text-[#003FBD]">Ready</span> to Transform Your Employer Brand?
           </h2>
           
           <p className="text-lg md:text-xl text-gray-300 mb-12 max-w-2xl mx-auto">
@@ -21,11 +21,14 @@ export default function CTA() {
           </p>
 
           <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="px-10 py-4 bg-white text-black border-2 border-white rounded-lg font-semibold text-lg hover:bg-black hover:text-white hover:border-white transition-all duration-300"
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            className="brutalist-button bg-white hover:bg-white text-black"
           >
-            Start Your Free Trial →
+            <div className="button-text">
+              <span>Start Free</span>
+              <span>Trial Now</span>
+            </div>
           </motion.button>
 
           <p className="text-gray-400 text-sm mt-8">

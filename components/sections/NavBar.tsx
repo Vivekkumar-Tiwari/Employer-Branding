@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
 import { useState } from 'react'
+import Image from 'next/image'
 
 export default function NavBar() {
   const [isOpen, setIsOpen] = useState(false)
@@ -21,10 +22,13 @@ export default function NavBar() {
             className="flex items-center gap-2"
             whileHover={{ scale: 1.05 }}
           >
-            <div className="w-8 h-8 bg-black rounded-lg flex items-center justify-center text-white font-bold">
-              EB
-            </div>
-            <span className="font-semibold text-black hidden sm:inline">Employer Branding</span>
+            <Image
+              src="/logo.png"
+              alt="Ample Logo"
+              width={140}
+              height={40}
+              className="h-10 w-auto"
+            />
           </motion.div>
 
           {/* Desktop Menu */}
@@ -42,20 +46,16 @@ export default function NavBar() {
           </div>
 
           {/* CTA Button */}
-          <div className="hidden md:flex gap-4">
+          <div className="hidden md:flex gap-2">
             <motion.button
-              className="px-6 py-2 rounded-lg border-2 border-black text-black hover:bg-black hover:text-white transition-all"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+              className="brutalist-button"
+              style={{ width: 'auto', height: '50px' }}
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
             >
-              Talk to Team
-            </motion.button>
-            <motion.button
-              className="px-6 py-2 rounded-lg bg-black text-white border-2 border-black hover:bg-white hover:text-black transition-all"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              Book Discovery
+              <div className="button-text">
+                <span>Contact</span>
+              </div>
             </motion.button>
           </div>
 

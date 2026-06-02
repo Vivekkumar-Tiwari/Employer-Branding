@@ -46,7 +46,7 @@ export default function Testimonials() {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-semibold text-black mb-6">
-            What our customers say about us...
+            <span className="text-[#003FBD]">What</span> Our Customers Say
           </h2>
         </motion.div>
 
