@@ -1,37 +1,40 @@
-'use client'
+﻿'use client'
 
 import { motion } from 'framer-motion'
 
 export default function CTA() {
   return (
     <section className="w-full py-32 px-6 bg-white">
-      <div className="max-w-4xl mx-auto text-center">
+      <div className="max-w-7xl mx-auto">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
+          className="relative rounded-[4rem] bg-black p-12 md:p-24 overflow-hidden text-center"
         >
-          <h2 className="text-5xl md:text-6xl font-semibold text-black mb-12 leading-tight">
-            <span className="text-[#003FBD]">Ready</span> to Transform<br />Your Employer Brand?
-          </h2>
-          
-          <p className="text-lg md:text-xl text-gray-600 mb-16 max-w-2xl mx-auto">
-            Join 50+ companies turning their employees into powerful brand ambassadors. Start your free trial today.
-          </p>
+          {/* Decorative background elements */}
+          <div className="absolute top-0 left-0 w-full h-full pointer-events-none">
+            <div className="absolute top-[-20%] left-[-10%] w-[50%] h-[50%] bg-blue-600/20 rounded-full blur-[120px]" />
+            <div className="absolute bottom-[-20%] right-[-10%] w-[50%] h-[50%] bg-purple-600/20 rounded-full blur-[120px]" />
+          </div>
 
-          {/* CONTACT style button - Black with white text and blue border */}
-          <motion.button
-            whileHover={{ translateY: '-4px', boxShadow: '2px 5px 0 0 #003FBD' }}
-            whileTap={{ translateY: '2px', boxShadow: '0 0 0 0 #003FBD' }}
-            className="px-12 py-5 bg-black text-white border-4 border-[#003FBD] rounded-lg font-bold text-xl transition-all duration-300 inline-block"
-          >
-            CONTACT
-          </motion.button>
-
-          <p className="text-gray-500 text-sm mt-12">
-            No credit card required. Setup takes less than 5 minutes.
-          </p>
+          <div className="relative z-10 max-w-3xl mx-auto">
+            <h2 className="text-4xl md:text-6xl font-semibold text-white mb-8 tracking-tight leading-tight">
+              Ready to turn your team into a growth engine?
+            </h2>
+            <p className="text-xl text-gray-400 mb-12 font-light">
+              Join 500+ forward-thinking companies already using our platform to scale their employer brand.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              <button className="px-10 py-4 bg-white text-black rounded-full font-semibold text-lg hover:bg-gray-100 hover:scale-[1.05] transition-all">
+                Get started for free
+              </button>
+              <button className="px-10 py-4 bg-transparent text-white border border-white/20 rounded-full font-semibold text-lg hover:bg-white/10 transition-all">
+                Talk to sales
+              </button>
+            </div>
+          </div>
         </motion.div>
       </div>
     </section>

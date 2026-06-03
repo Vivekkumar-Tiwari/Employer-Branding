@@ -1,8 +1,23 @@
-'use client'
+﻿'use client'
 
 import { motion } from 'framer-motion'
 import { Linkedin, Instagram, Youtube, ArrowUp } from 'lucide-react'
 import Image from 'next/image'
+
+const FooterObject = ({ name, color, delay = 0, x = 0, y = 0 }: { name: string, color: string, delay?: number, x?: number, y?: number }) => (
+  <motion.div
+    animate={{ 
+      y: [0, -15, 0],
+      rotate: [0, 5, -5, 0]
+    }}
+    transition={{ duration: 5, delay, repeat: Infinity, ease: "easeInOut" }}
+    className="absolute hidden lg:flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm pointer-events-none"
+    style={{ left: `${x}%`, top: `${y}%` }}
+  >
+    <div className={`w-2 h-2 rounded-full ${color}`} />
+    <span className="text-[9px] font-bold uppercase tracking-widest text-white/40">{name}</span>
+  </motion.div>
+)
 
 export default function Footer() {
   const scrollToTop = () => {
@@ -10,10 +25,10 @@ export default function Footer() {
   }
 
   const footerLinks = {
-    Services: ['Content Production', 'Strategy', 'Social Management', 'Analytics'],
-    Company: ['About Us', 'Blog', 'Case Studies', 'Careers'],
-    Resources: ['Content Guide', 'Templates', 'Best Practices', 'Documentation'],
-    Legal: ['Privacy Policy', 'Terms of Service', 'Cookie Policy', 'Contact'],
+    Platform: ['Features', 'Analytics', 'Integrations', 'Security'],
+    Company: ['About Us', 'Careers', 'Blog', 'Contact'],
+    Resources: ['Documentation', 'Guides', 'Templates', 'API'],
+    Legal: ['Privacy', 'Terms', 'Cookie Policy'],
   }
 
   const socialLinks = [
@@ -22,37 +37,25 @@ export default function Footer() {
     { icon: Youtube, href: '#', label: 'YouTube' },
   ]
 
-  return (
-    <footer className="bg-black text-white relative overflow-hidden">
-      {/* Animated background */}
-      <div className="absolute inset-0 -z-10">
-        <motion.div
-          className="absolute top-0 left-1/4 w-96 h-96 bg-gray-900/50 rounded-full blur-3xl"
-          animate={{ y: [0, 30, 0] }}
-          transition={{ duration: 8, repeat: Infinity }}
-        />
-        <motion.div
-          className="absolute bottom-0 right-1/4 w-96 h-96 bg-gray-900/50 rounded-full blur-3xl"
-          animate={{ y: [0, -30, 0] }}
-          transition={{ duration: 8, repeat: Infinity, delay: 1 }}
-        />
-      </div>
+  const footerObjects = [
+    { name: 'Content Reactor', color: 'bg-red-400', x: 10, y: 20, delay: 0 },
+    { name: 'Narrative Engine', color: 'bg-blue-400', x: 80, y: 15, delay: 1 },
+    { name: 'Story Stream', color: 'bg-green-400', x: 15, y: 70, delay: 2 },
+    { name: 'Creator Orbit', color: 'bg-purple-400', x: 85, y: 65, delay: 0.5 },
+    { name: 'Content Pulse', color: 'bg-orange-400', x: 50, y: 10, delay: 1.5 },
+  ]
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
-        {/* Top section */}
-        <motion.div
-          className="grid md:grid-cols-2 gap-12 pb-12 border-b border-white/20"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
-          {/* Branding */}
-          <div className="space-y-4">
-            <motion.div
-              className="flex items-center gap-2"
-              whileHover={{ scale: 1.05 }}
-            >
+  return (
+    <footer className="bg-black text-white py-24 px-6 overflow-hidden relative">
+      {/* 3D-ish Objects */}
+      {footerObjects.map((obj, i) => (
+        <FooterObject key={i} {...obj} />
+      ))}
+
+      <div className="max-w-7xl mx-auto relative z-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-16 mb-24">
+          <div className="lg:col-span-2 space-y-8">
+            <div className="flex items-center gap-2">
               <Image
                 src="/logo.png"
                 alt="Ample Logo"
@@ -60,124 +63,56 @@ export default function Footer() {
                 height={40}
                 className="h-8 w-auto invert"
               />
-            </motion.div>
-            <p className="text-gray-400 max-w-md">
-              Transform employees into your most powerful brand channel through authentic, cinematic storytelling.
+            </div>
+            <p className="text-lg text-gray-500 max-w-sm font-light leading-relaxed">
+              The new standard for employee advocacy. Turn your team into your most powerful brand channel.
             </p>
+            <div className="flex items-center gap-4">
+              {socialLinks.map((social) => {
+                const Icon = social.icon
+                return (
+                  <motion.a
+                    key={social.label}
+                    href={social.href}
+                    className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-gray-400 hover:text-white hover:border-white/30 transition-all"
+                    whileHover={{ scale: 1.1 }}
+                  >
+                    <Icon size={18} />
+                  </motion.a>
+                )
+              })}
+            </div>
           </div>
 
-          {/* Newsletter */}
-          <div className="space-y-4">
-            <h3 className="font-semibold text-lg">Stay Updated</h3>
-            <motion.div
-              className="flex gap-2"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
-            >
-              <input
-                type="email"
-                placeholder="Enter your email"
-                className="flex-1 px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder:text-white/50 focus:outline-none focus:border-white/40"
-              />
-              <motion.button
-                className="px-6 py-3 rounded-lg bg-white text-black font-semibold hover:bg-gray-200 transition-colors"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                Subscribe
-              </motion.button>
-            </motion.div>
-          </div>
-        </motion.div>
-
-        {/* Links section */}
-        <motion.div
-          className="grid sm:grid-cols-2 md:grid-cols-4 gap-8 py-12"
-          variants={{
-            hidden: { opacity: 0 },
-            visible: {
-              opacity: 1,
-              transition: {
-                staggerChildren: 0.1,
-              },
-            },
-          }}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-        >
           {Object.entries(footerLinks).map(([category, links]) => (
-            <motion.div
-              key={category}
-              className="space-y-4"
-              variants={{
-                hidden: { opacity: 0, y: 20 },
-                visible: { opacity: 1, y: 0 },
-              }}
-            >
-              <h4 className="font-semibold text-lg">{category}</h4>
-              <ul className="space-y-2">
+            <div key={category} className="space-y-6">
+              <h4 className="text-sm font-semibold uppercase tracking-widest text-white/40">{category}</h4>
+              <ul className="space-y-4">
                 {links.map((link) => (
                   <li key={link}>
-                    <motion.a
-                      href="#"
-                      className="text-gray-400 hover:text-white transition-colors"
-                      whileHover={{ x: 4 }}
-                    >
+                    <a href="#" className="text-gray-400 hover:text-white transition-colors text-sm font-medium">
                       {link}
-                    </motion.a>
+                    </a>
                   </li>
                 ))}
               </ul>
-            </motion.div>
+            </div>
           ))}
-        </motion.div>
+        </div>
 
-        {/* Bottom section */}
-        <motion.div
-          className="flex flex-col sm:flex-row items-center justify-between gap-8 pt-12 border-t border-white/20"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.4 }}
-        >
-          {/* Copyright */}
-          <p className="text-gray-400 text-sm">
-            © 2024 Employer Branding Agency. All rights reserved.
+        <div className="pt-12 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-8">
+          <p className="text-sm text-gray-600">
+            © 2024 Ample Technologies Inc. All rights reserved.
           </p>
-
-          {/* Social Links */}
-          <div className="flex items-center gap-4">
-            {socialLinks.map((social) => {
-              const Icon = social.icon
-              return (
-                <motion.a
-                  key={social.label}
-                  href={social.href}
-                  className="p-3 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
-                  whileHover={{ scale: 1.1, rotate: 5 }}
-                  whileTap={{ scale: 0.95 }}
-                  aria-label={social.label}
-                >
-                  <Icon size={20} />
-                </motion.a>
-              )
-            })}
-          </div>
-
-          {/* Scroll to top */}
           <motion.button
             onClick={scrollToTop}
-            className="p-3 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
-            whileHover={{ scale: 1.1, y: -4 }}
-            whileTap={{ scale: 0.95 }}
-            aria-label="Scroll to top"
+            className="group flex items-center gap-2 text-sm font-semibold text-white"
+            whileHover={{ y: -2 }}
           >
-            <ArrowUp size={20} />
+            Back to top
+            <ArrowUp size={16} className="group-hover:-translate-y-1 transition-transform" />
           </motion.button>
-        </motion.div>
+        </div>
       </div>
     </footer>
   )

@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { motion } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
@@ -10,17 +10,17 @@ export default function NavBar() {
 
   return (
     <motion.nav
-      className="fixed top-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-md border-b border-black/10"
+      className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-xl border-b border-black/[0.03]"
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+        <div className="flex justify-between items-center h-20">
           {/* Logo */}
           <motion.div
-            className="flex items-center gap-2"
-            whileHover={{ scale: 1.05 }}
+            className="flex items-center gap-2 cursor-pointer"
+            whileHover={{ scale: 1.02 }}
           >
             <Image
               src="/logo.png"
@@ -32,28 +32,27 @@ export default function NavBar() {
           </motion.div>
 
           {/* Desktop Menu */}
-          <div className="hidden md:flex items-center gap-8">
-            {['Services', 'Work', 'Process', 'About'].map((item) => (
+          <div className="hidden md:flex items-center gap-10">
+            {['Platform', 'Solutions', 'Resources', 'Pricing'].map((item) => (
               <motion.a
                 key={item}
                 href={`#${item.toLowerCase()}`}
-                className="text-gray-700 hover:text-black transition-colors"
-                whileHover={{ scale: 1.05 }}
+                className="text-sm font-medium text-gray-500 hover:text-black transition-colors"
+                whileHover={{ y: -1 }}
               >
                 {item}
               </motion.a>
             ))}
           </div>
 
-          {/* CTA Button */}
-          <div className="hidden md:flex gap-2">
-            <motion.button
-              whileHover={{ translateY: '-2px', boxShadow: '2px 3px 0 0 black' }}
-              whileTap={{ translateY: '1px', boxShadow: '0 0 0 0 black' }}
-              className="px-6 py-2 bg-white text-black border-2 border-black rounded-full font-semibold transition-all duration-300 hover:bg-black hover:text-white text-sm"
-            >
-              Contact
-            </motion.button>
+          {/* CTA Buttons */}
+          <div className="hidden md:flex items-center gap-4">
+            <button className="text-sm font-semibold text-black border border-black/10 hover:border-black px-5 py-2 rounded-full transition-all">
+              Log in
+            </button>
+            <button className="px-6 py-2.5 bg-black text-white rounded-full text-sm font-semibold transition-all border border-transparent hover:bg-white hover:text-black hover:border-black active:scale-[0.98]">
+              Get Started
+            </button>
           </div>
 
           {/* Mobile Menu Button */}
@@ -68,27 +67,28 @@ export default function NavBar() {
         {/* Mobile Menu */}
         {isOpen && (
           <motion.div
-            className="md:hidden pb-4 space-y-4"
+            className="md:hidden pb-8 space-y-4 px-2"
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
           >
-            {['Services', 'Work', 'Process', 'About'].map((item) => (
+            {['Platform', 'Solutions', 'Resources', 'Pricing'].map((item) => (
               <a
                 key={item}
                 href={`#${item.toLowerCase()}`}
-                className="block text-gray-700 hover:text-black"
+                className="block text-lg font-medium text-gray-700 hover:text-black"
               >
                 {item}
               </a>
             ))}
-            <motion.button
-              className="w-full px-6 py-2 rounded-lg bg-black text-white"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              Book Discovery
-            </motion.button>
+            <div className="pt-4 space-y-3">
+              <button className="w-full px-6 py-3 rounded-xl bg-gray-50 text-black font-semibold border border-black/10">
+                Log in
+              </button>
+              <button className="w-full px-6 py-3 rounded-xl bg-black text-white font-semibold border border-transparent hover:border-white">
+                Get Started
+              </button>
+            </div>
           </motion.div>
         )}
       </div>
