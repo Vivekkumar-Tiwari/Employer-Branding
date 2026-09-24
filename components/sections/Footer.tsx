@@ -1,4 +1,4 @@
-﻿'use client'
+'use client'
 
 import { motion } from 'framer-motion'
 import { Linkedin, Instagram, Youtube, ArrowUp } from 'lucide-react'

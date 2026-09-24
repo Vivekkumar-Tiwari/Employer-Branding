@@ -1,4 +1,8 @@
-﻿'use client'
+'use client'
+
+import { useRef } from 'react'
+import gsap from 'gsap'
+import { useGSAP } from '@gsap/react'
 
 import NavBar from '@/components/sections/NavBar'
 import Hero from '@/components/sections/Hero'
@@ -11,8 +15,19 @@ import CTA from '@/components/sections/CTA'
 import Footer from '@/components/sections/Footer'
 
 export default function Page() {
+  const container = useRef<HTMLElement>(null)
+
+  useGSAP(() => {
+    gsap.from(container.current, {
+      opacity: 0,
+      y: 20,
+      duration: 1,
+      ease: 'power3.out'
+    })
+  }, { scope: container })
+
   return (
-    <main className="w-full bg-white overflow-x-hidden antialiased">
+    <main ref={container} className="w-full bg-background text-foreground overflow-x-hidden antialiased">
       <NavBar />
       <Hero />
       <ValuedClients />
