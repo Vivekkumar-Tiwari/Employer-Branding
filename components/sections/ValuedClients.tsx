@@ -1,29 +1,34 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import Image from 'next/image'
 
 const clients = [
-  'Google', 'Airbnb', 'Notion', 'Coinbase', 'Stripe', 'Figma', 'Slack', 'Linear'
+  'google', 'airbnb', 'notion', 'coinbase', 'stripe', 'figma', 'slack', 'linear'
 ]
 
 export default function ValuedClients() {
   return (
-    <section className="w-full py-20 bg-white border-y border-black/[0.03]">
-      <div className="max-w-7xl mx-auto px-6">
-        <p className="text-center text-sm font-medium text-gray-400 uppercase tracking-[0.2em] mb-12">
-          Trusted by world class innovative teams
-        </p>
-        <div className="flex flex-wrap justify-center gap-x-16 gap-y-10 items-center opacity-40 grayscale transition-all duration-500 hover:grayscale-0 hover:opacity-100">
-          {clients.map((client, i) => (
-            <motion.span
-              key={i}
-              whileHover={{ scale: 1.05 }}
-              className="text-2xl font-bold text-black tracking-tight cursor-default"
-            >
-              {client}
-            </motion.span>
+    <section className="w-full py-16 bg-[#F7F7F7] border-y border-black/[0.03] overflow-hidden">
+      <div className="w-full flex relative overflow-hidden group">
+        <motion.div
+          animate={{ x: ['0%', '-50%'] }}
+          transition={{ ease: 'linear', duration: 25, repeat: Infinity }}
+          className="flex whitespace-nowrap gap-24 items-center pl-24"
+        >
+          {/* Double array for seamless loop */}
+          {[...clients, ...clients].map((client, i) => (
+            <div key={i} className="relative w-28 h-8 flex-shrink-0">
+              <Image 
+                src={`https://cdn.simpleicons.org/${client}`} 
+                alt={client}
+                fill
+                className="object-contain"
+                unoptimized
+              />
+            </div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   )

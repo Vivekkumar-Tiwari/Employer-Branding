@@ -6,7 +6,6 @@ import { useGSAP } from '@gsap/react'
 
 import NavBar from '@/components/sections/NavBar'
 import Hero from '@/components/sections/Hero'
-import ValuedClients from '@/components/sections/ValuedClients'
 import Features from '@/components/sections/Features'
 import How from '@/components/sections/How'
 import Testimonials from '@/components/sections/Testimonials'
@@ -27,16 +26,17 @@ export default function Page() {
   }, { scope: container })
 
   return (
-    <main ref={container} className="w-full bg-background text-foreground overflow-x-hidden antialiased">
+    <>
       <NavBar />
-      <Hero />
-      <ValuedClients />
-      <Features />
-      <Results />
-      <How />
-      <Testimonials />
-      <CTA />
-      <Footer />
-    </main>
+      <main ref={container} className="w-full bg-background text-foreground antialiased">
+        <Hero />
+        <Features />
+        <Results />
+        <How />
+        <Testimonials />
+        <CTA />
+        <Footer />
+      </main>
+    </>
   )
 }
