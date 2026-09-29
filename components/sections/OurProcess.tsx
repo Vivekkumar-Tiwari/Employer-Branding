@@ -116,7 +116,11 @@ export default function OurProcess() {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            Start Your Journey <ArrowRight size={20} />
+            Start Your Journey 
+            <div className="relative flex items-center justify-center overflow-hidden w-5 h-5 ml-1">
+              <ArrowRight size={20} className="absolute transition-transform duration-300 group-hover:translate-x-6" />
+              <ArrowRight size={20} className="absolute -translate-x-6 transition-transform duration-300 group-hover:translate-x-0" />
+            </div>
           </motion.button>
         </motion.div>
       </div>

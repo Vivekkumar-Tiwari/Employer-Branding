@@ -61,7 +61,11 @@ export default function FinalCTA() {
             }}
             whileTap={{ scale: 0.95 }}
           >
-            Book Discovery Call <ArrowRight size={20} />
+            Book Discovery Call 
+            <div className="relative flex items-center justify-center overflow-hidden w-5 h-5 ml-1">
+              <ArrowRight size={20} className="absolute transition-transform duration-300 group-hover:translate-x-6" />
+              <ArrowRight size={20} className="absolute -translate-x-6 transition-transform duration-300 group-hover:translate-x-0" />
+            </div>
           </motion.button>
           <motion.button
             className="px-10 py-5 bg-white/5 text-foreground rounded-full font-semibold border border-border hover:bg-white/10 transition-colors"

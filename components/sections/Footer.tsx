@@ -1,117 +1,129 @@
-﻿'use client'
+'use client'
 
 import { motion } from 'framer-motion'
-import { Linkedin, Instagram, Youtube, ArrowUp } from 'lucide-react'
+import { Instagram, Linkedin, Send, Twitter } from 'lucide-react'
 import Image from 'next/image'
 
-const FooterObject = ({ name, color, delay = 0, x = 0, y = 0 }: { name: string, color: string, delay?: number, x?: number, y?: number }) => (
-  <motion.div
-    animate={{ 
-      y: [0, -15, 0],
-      rotate: [0, 5, -5, 0]
-    }}
-    transition={{ duration: 5, delay, repeat: Infinity, ease: "easeInOut" }}
-    className="absolute hidden lg:flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm pointer-events-none"
-    style={{ left: `${x}%`, top: `${y}%` }}
-  >
-    <div className={`w-2 h-2 rounded-full ${color}`} />
-    <span className="text-[9px] font-bold uppercase tracking-widest text-white/40">{name}</span>
-  </motion.div>
-)
-
 export default function Footer() {
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' })
-  }
-
   const footerLinks = {
-    Platform: ['Features', 'Analytics', 'Integrations', 'Security'],
-    Company: ['About Us', 'Careers', 'Blog', 'Contact'],
-    Resources: ['Documentation', 'Guides', 'Templates', 'API'],
-    Legal: ['Privacy', 'Terms', 'Cookie Policy'],
+    Features: ['Subscription Management', 'Custom checkout', 'Campaign strategy'],
+    Explore: ['Features', 'Pricing', 'Calculator'],
+    Help: ['FAQs', 'Email', 'Help centre'],
   }
 
   const socialLinks = [
-    { icon: Linkedin, href: '#', label: 'LinkedIn' },
+    { icon: Twitter, href: '#', label: 'X' },
     { icon: Instagram, href: '#', label: 'Instagram' },
-    { icon: Youtube, href: '#', label: 'YouTube' },
-  ]
-
-  const footerObjects = [
-    { name: 'Content Reactor', color: 'bg-red-400', x: 10, y: 20, delay: 0 },
-    { name: 'Narrative Engine', color: 'bg-blue-400', x: 80, y: 15, delay: 1 },
-    { name: 'Story Stream', color: 'bg-green-400', x: 15, y: 70, delay: 2 },
-    { name: 'Creator Orbit', color: 'bg-purple-400', x: 85, y: 65, delay: 0.5 },
-    { name: 'Content Pulse', color: 'bg-orange-400', x: 50, y: 10, delay: 1.5 },
+    { icon: Linkedin, href: '#', label: 'LinkedIn' },
   ]
 
   return (
-    <footer className="bg-black text-white py-24 px-6 overflow-hidden relative">
-      {/* 3D-ish Objects */}
-      {footerObjects.map((obj, i) => (
-        <FooterObject key={i} {...obj} />
-      ))}
-
-      <div className="max-w-7xl mx-auto relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-16 mb-24">
-          <div className="lg:col-span-2 space-y-8">
+    <footer className="bg-white text-gray-900 pt-16 pb-8 overflow-hidden relative">
+      <div className="w-full max-w-[1300px] mx-auto relative z-10 flex flex-col min-h-[500px]">
+        
+        {/* Top Section: Logo & Socials */}
+        <div className="flex flex-col md:flex-row justify-between items-center pb-8 border-b border-gray-100 px-6 lg:px-8">
+          <div 
+            className="bg-black h-9 w-[140px]"
+            style={{
+              maskImage: 'url(/logo.png)',
+              maskSize: 'contain',
+              maskRepeat: 'no-repeat',
+              maskPosition: 'left center',
+              WebkitMaskImage: 'url(/logo.png)',
+              WebkitMaskSize: 'contain',
+              WebkitMaskRepeat: 'no-repeat',
+              WebkitMaskPosition: 'left center',
+            }}
+          />
+          <div className="flex items-center gap-4 mt-6 md:mt-0">
+            <span className="text-[14px] font-medium text-black mr-2">Social Media</span>
             <div className="flex items-center gap-2">
-              <Image
-                src="/logo.png"
-                alt="Ample Logo"
-                width={140}
-                height={40}
-                className="h-8 w-auto invert"
-              />
-            </div>
-            <p className="text-lg text-gray-500 max-w-sm font-light leading-relaxed">
-              The new standard for employee advocacy. Turn your team into your most powerful brand channel.
-            </p>
-            <div className="flex items-center gap-4">
               {socialLinks.map((social) => {
                 const Icon = social.icon
                 return (
                   <motion.a
                     key={social.label}
                     href={social.href}
-                    className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-gray-400 hover:text-white hover:border-white/30 transition-all"
-                    whileHover={{ scale: 1.1 }}
+                    className="w-10 h-10 rounded-lg bg-white border border-gray-200 flex items-center justify-center text-gray-800 hover:text-black hover:border-gray-300 transition-colors shadow-sm"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
                   >
-                    <Icon size={18} />
+                    <Icon size={16} strokeWidth={1.5} />
                   </motion.a>
                 )
               })}
             </div>
           </div>
-
-          {Object.entries(footerLinks).map(([category, links]) => (
-            <div key={category} className="space-y-6">
-              <h4 className="text-sm font-semibold uppercase tracking-widest text-white/40">{category}</h4>
-              <ul className="space-y-4">
-                {links.map((link) => (
-                  <li key={link}>
-                    <a href="#" className="text-gray-400 hover:text-white transition-colors text-sm font-medium">
-                      {link}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
         </div>
 
-        <div className="pt-12 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-8">
-          <p className="text-sm text-gray-600">
-            © 2024 Ample Technologies Inc. All rights reserved.
-          </p>
-          <motion.button
-            onClick={scrollToTop}
-            className="group flex items-center gap-2 text-sm font-semibold text-white"
-            whileHover={{ y: -2 }}
+        {/* Middle Section: Links and Contact */}
+        <div className="flex flex-col lg:flex-row justify-between mt-16 px-6 lg:px-8 mb-auto">
+          
+          <div className="lg:w-[35%] flex flex-col space-y-4">
+            <h4 className="text-[14px] font-semibold text-black tracking-tight">Reach out to us</h4>
+            <div className="bg-[#F0F8FF] border border-[#E5F3FF] rounded-[18px] p-4 flex items-center gap-4 w-full max-w-[320px] cursor-pointer hover:shadow-sm transition-all group">
+              <div className="w-[46px] h-[46px] bg-[#31A8FF] rounded-full flex items-center justify-center shrink-0 shadow-sm group-hover:scale-105 transition-transform">
+                <Send className="text-white ml-[-2px] mt-[2px]" size={18} fill="white" />
+              </div>
+              <div className="flex flex-col gap-0.5">
+                <p className="text-[14px] font-medium text-black">Contact us on telegram</p>
+                <p className="text-[12px] text-gray-500 font-normal">Our associate will reply within 24h</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="lg:w-[50%] grid grid-cols-2 md:grid-cols-3 gap-8 pt-1">
+            {Object.entries(footerLinks).map(([category, links]) => (
+              <div key={category} className="space-y-6">
+                <h4 className="text-[14px] font-semibold text-black tracking-tight">{category}</h4>
+                <ul className="space-y-4">
+                  {links.map((link) => (
+                    <li key={link}>
+                      <a href="#" className="text-[14px] text-gray-500 font-normal hover:text-black transition-colors">
+                        {link}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+      
+      {/* Background Watermark */}
+      <div className="absolute bottom-[50px] left-0 right-0 w-full max-w-[1300px] mx-auto px-6 lg:px-8 pointer-events-none z-0 flex justify-center overflow-hidden">
+        <svg 
+          viewBox="0 0 1500 350" 
+          className="w-full h-auto"
+          style={{ 
+            maskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 5%, rgba(0,0,0,0) 85%)',
+            WebkitMaskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 5%, rgba(0,0,0,0) 85%)'
+          }}
+        >
+          <text 
+            x="50%" 
+            y="85%" 
+            textAnchor="middle" 
+            className="font-bold tracking-tighter fill-[#F2F2F2]" 
+            fontSize="320"
+            letterSpacing="-0.04em"
           >
-            Back to top
-            <ArrowUp size={16} className="group-hover:-translate-y-1 transition-transform" />
-          </motion.button>
+            employer
+          </text>
+        </svg>
+      </div>
+
+      {/* Bottom Copyright */}
+      <div className="w-full max-w-[1300px] mx-auto px-6 lg:px-8 relative z-10 pt-16 flex flex-col md:flex-row items-center justify-between gap-6">
+        <p className="text-[13px] text-gray-500 font-normal">
+          © 2025 Employer. All rights reserved.
+        </p>
+        <div className="flex items-center gap-6 md:gap-8 text-[13px] text-gray-500 font-normal">
+          <a href="#" className="hover:text-black transition-colors">Terms of Service</a>
+          <a href="#" className="hover:text-black transition-colors">Privacy Policy</a>
+          <a href="#" className="hover:text-black transition-colors">Cookie Policy</a>
         </div>
       </div>
     </footer>

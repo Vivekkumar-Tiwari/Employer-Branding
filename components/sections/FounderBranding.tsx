@@ -97,7 +97,11 @@ export default function FounderBranding() {
               viewport={{ once: true }}
               transition={{ delay: 0.4, duration: 0.6 }}
             >
-              Apply For Founder Branding <ArrowRight size={20} />
+              Apply For Founder Branding 
+              <div className="relative flex items-center justify-center overflow-hidden w-5 h-5 ml-1">
+                <ArrowRight size={20} className="absolute transition-transform duration-300 group-hover:translate-x-6" />
+                <ArrowRight size={20} className="absolute -translate-x-6 transition-transform duration-300 group-hover:translate-x-0" />
+              </div>
             </motion.button>
           </div>
         </motion.div>
